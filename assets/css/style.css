@@ -14,13 +14,12 @@ body {
                                     @@@HEADER
 
 ---------------------------------------------------------------------------------------*/
-.navbar{
+ .bg-persoUn{
     background-color: #608DF9 !important;
-    position: fixed !important;
-    width: 100% !important;
-}
 
-nav a {
+} 
+
+/* nav a {
     color: white !important;
     border-radius: 100px;
 }
@@ -32,7 +31,7 @@ nav a img{
 
 nav li:last-child {
     color: #608DF9 !important ;
-}
+} */
 
 /* -----------------------------------------------------------------------------------
 
@@ -43,16 +42,15 @@ nav li:last-child {
 .img-index {
     border-radius: 53px !important;
     box-shadow: black 0px 1px 7px !important;
-    width: 350px !important;
+    width: 340px !important;
     margin-left: auto;
     margin-right: auto;
 }
 
 .button-start {
-    width: 200px !important;
-    height: 50px;
-    margin-left: auto;
-    margin-right: auto;
+
+    color: white !important;
+
     border-radius: 20px !important;
 }
 
@@ -65,7 +63,5 @@ nav li:last-child {
 footer{
     position:absolute;
     bottom:0;
-    width:100%;
-    padding-top:50px;
-    height:50px;
+
     }

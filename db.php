@@ -1,5 +1,7 @@
 <?php
 
+// require_once `config.php`;
+
 define('DB_NAME', 'budget');
 define('USER', 'root');
 define('PWD', '');

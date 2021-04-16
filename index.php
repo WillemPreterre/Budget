@@ -1,4 +1,5 @@
 <?php require_once 'inc/header.php'; ?>
+<?php require_once 'function.php'; ?>
 
 <body>
     <div class="container">
@@ -7,11 +8,21 @@
                 <h1 class="text-center">Bienvenue chez UrBudget</h1>
             </div>
         </div>
-        <div class="row mt-4"><img class="img-index" src="img/434.jpg"></div>
         <div class="row mt-4">
-            <p class="fs-4 text-center">Bienvenue sur notre site nous sommes fière de vous présenter un nouveau moyen d'économiser votre argent grâce à nos différents services pour ajouter de l'argent, ajouter des recettes, voir vos dépenses </p>
+            <div class="col"><img class="img-index" src="img/434.jpg"></div>
         </div>
-        <div class="row button-start mt-3"><button type="button" class="btn btn-primary"><a href="dashboard.php">Commencer maintenant</a></button></div>
+        <div class="row m-4">
+            <div class="col">
+                <p class="fs-4 text-center">Bienvenue sur notre site nous sommes fière de vous présenter un nouveau moyen d'économiser votre argent grâce à nos différents services pour ajouter de l'argent, ajouter des recettes, voir vos dépenses </p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col">
+                <a href="dashboard.php">
+                    <button type="button" class=" button-start btn bg-persoUn rounded-pill">Commencer maintenant</button>
+                </a>
+            </div>
+        </div>
     </div>
-</body>
-<?php require_once 'inc/footer.php'; ?>
+
+    <?php require_once 'inc/footer.php'; ?>

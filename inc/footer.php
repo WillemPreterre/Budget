@@ -1,11 +1,5 @@
 <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <p>Made by Willem</p>
-            </div>
-        </div>
-    </div>
+    <p>Made by Willem</p>
 </footer>
 <script src="/assets/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
