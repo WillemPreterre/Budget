@@ -18,51 +18,75 @@
 
                     <div class="form-group">
                         <label for="birthdaydate">Birthday</label>
-                        <input type="date" class="form-control" id="birthdaydate" name="date">
+                        <input type="text" class="form-control" id="birthdaydate" placeholder="1999-05-03" name="birth-date">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button><br>
                     <?php
-                    
+
+                    //  Post du formulaire
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         // collect value of input field
                         $firstName = $_POST['first-name'];
+                        $lastName = $_POST['last-name'];
+                        $date = $_POST['birth-date'];
                         if (empty($firstName)) {
                             echo "Prénom est vide";
-                        } else {
-                            echo $firstName;
-                        }
-                    } 
-                    ?><br>
-
-                    <?php
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        // collect value of input field
-                        $lastName = $_POST['last-name'];
+                         } 
+                        //else {
+                        //     echo $firstName;
+                        // }
                         if (empty($lastName)) {
                             echo "Nom est vide";
-                        } else {
-                            echo $lastName;
                         }
-                    } 
-                    ?><br>
-                    
-                    <?php 
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        // collect value of input field
-                        $date = $_POST['date'];
+                        // 
+                        // else {
+                        //     echo $lastName;
+                        // }
                         if (empty($date)) {
                             echo "Date est vide";
+                         } 
+                        // else {
+                        //     echo $date;
+                        // 
+                    }
+                    //  Envoie donnée dans la database 
+
+                    if (isset($lastName,$date,$firstName)) {
+                        $first_name = $_POST['first-name'];
+                        $last_name = $_POST['last-name'];
+                        $birth_date = $_POST['birth-date'];
+                            
+                        $link = mysqli_connect("localhost", "root", "", "budget");
+                        // Attempt insert query execution
+                        $sql = "INSERT INTO users (first_name, last_name, birth_date) VALUES ('$first_name', '$last_name','$birth_date')";
+                        if (mysqli_query($link, $sql)) {
+                            echo "Records added successfully.";
                         } else {
-                            echo $date;
+                            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                         }
-                    } 
-                    
-                    
-                    ?><br>
+                        // Close connection
+                        // double
+                        mysqli_close($link);
+                    }
+                    else {
+                        echo "no";
+                    }
+                        ?>
+
+
+
+                    <?php
+
+                    if (preg_match("/[0-9]{4} ([0-9]{2}[-\/]){2}/", $birth_date)) {
+                        echo " SUCCESS";
+                   } else { 
+                        echo " ERROR";
+                   } 
+                    ?>
                 </form>
             </div>
         </div>
     </div>
 
 
-    <?php require_once 'inc/footer.php'; ?>
+    <?php require_once 'inc/footer.php';?>

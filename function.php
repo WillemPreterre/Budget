@@ -14,10 +14,16 @@ EOD;
     return $users;
 }
 
-?>
-<?php 
-// $prenom = $_POST['first-name'];
-// $nom = $_POST['last-name'];
-// $date = $_POST['date'];
 
-?>
+
+function drop_user()
+{
+    $link = mysqli_connect("localhost", "root", "", "budget");
+    // Attempt insert query execution
+    $sql = "DELETE FROM `users` WHERE `user_id` = :user_id; ";
+    if (mysqli_query($link, $sql)) {
+        echo "Records added successfully.";
+    } else {
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+    }
+}

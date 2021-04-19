@@ -9,17 +9,19 @@
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col"><img class="img-index" src="img/434.jpg"></div>
+            <div class="col">
+                <p class="text-center"><img class="img-index" src="img/434.jpg"></p>
+            </div>
         </div>
-        <div class="row m-4">
+        <div class="row mt-4">
             <div class="col">
                 <p class="fs-4 text-center">Bienvenue sur notre site nous sommes fière de vous présenter un nouveau moyen d'économiser votre argent grâce à nos différents services pour ajouter de l'argent, ajouter des recettes, voir vos dépenses </p>
             </div>
         </div>
         <div class="row ">
-            <div class="col">
+            <div class="col" >
                 <a href="dashboard.php">
-                    <button type="button" class=" button-start btn bg-persoUn rounded-pill">Commencer maintenant</button>
+                    <p class="text-center"><button type="button" class=" button-start btn bg-persoUn rounded-pill">Commencer maintenant</button></p>
                 </a>
             </div>
         </div>
