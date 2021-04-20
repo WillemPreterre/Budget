@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/assets/css/style.css">
+    <?php require_once 'help.php'; ?>
 </head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-persoUn">
@@ -22,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/user_plus.php">Ajout users</a>
+                    <a class="nav-link" href="/add_user.php">Ajout users</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/revenu_plus.php">Ajout revenu</a>

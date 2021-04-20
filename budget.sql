@@ -102,7 +102,7 @@ CREATE TABLE `users` (
   `birth_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
+
 -- Déchargement des données de la table `users`
 --
 
