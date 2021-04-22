@@ -4,7 +4,7 @@ require_once 'function.php';
 
 // Fonction Suppression Utilisateur
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    delete_users($_POST["user_id"]);
+    delete_users($_POST["delete_user"]);
 }
 
 ?>
@@ -34,16 +34,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <tr>
                                     <td><?php echo $user['first_name'] ?></td>
                                     <td><?php echo $user['last_name'] ?></td>
-                                    <td><a class="col-3" href="user_detail.php"> + Info </a></td>
+
+                                    <td>
+                                        <!-- <a class="col-3" href="user_detail.php"> + Info </a> -->
+                                        <a class="btn btn-primary" href="user_detail.php?user_id=<?php echo $user['user_id'] ?>"> + Info </a>
+                                    </td>
                                     <!-- Faire index pour chaque personne -->
-                                    <td><button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>" class="btn"><img class="img-thumbnail" src="img/poubelle.png"></button></td>
+                                    <td><button type="submit" name="delete_user" value="<?php echo $user['user_id'] ?>" class="btn"><img class="img-thumbnail" src="img/poubelle.png"></button></td>
                                 </tr>
                             <?php endforeach ?>
                         </tbody>
                     </table>
                 </form>
                 <!-- <pre>  -->
-                <?php 
+                <?php
                 // print_r($usersAll)   
                 ?>
                 <!-- </pre> -->
