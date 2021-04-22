@@ -10,20 +10,23 @@ EOD;
 
     // exécute la requête 
     $postsStmt = $db->query($sql); // Récupère le jeu de données (objet PDO statement)
-    $users = $postsStmt->fetchAll();
+    $users = $postsStmt->fetchAll(PDO::FETCH_ASSOC);
     return $users;
 }
 
 
-
-function drop_user()
+function delete_users($user_id)
 {
-    $link = mysqli_connect("localhost", "root", "", "budget");
-    // Attempt insert query execution
-    $sql = "DELETE FROM `users` WHERE `user_id` = :user_id; ";
-    if (mysqli_query($link, $sql)) {
-        echo "Records added successfully.";
-    } else {
-        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-    }
+    $db = db();
+    $request = <<<EOD
+        DELETE FROM `expenses`
+        WHERE `user_id` = :user_id;
+        DELETE FROM `incomes`
+        WHERE `user_id` = :user_id;
+        DELETE FROM `users`
+        WHERE `user_id` = :user_id;
+EOD;
+    $delete_user_Stmt = $db->prepare($request);
+    $delete_user_Stmt->bindValue(':user_id', $user_id);
+    $delete_user_Stmt->execute();
 }

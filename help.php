@@ -1,34 +1,43 @@
 <?php
-
-function filter_int_date($date)
+// Sanitize_date (Sanitize = nettoie)
+function sanitize_date($date)
 {
-    // filter
-    if (filter_var($date, FILTER_SANITIZE_NUMBER_INT)) {
-        echo "A INT number was found.";
-    } else {
-        echo "A INT number was not found.";
-    }
+    $date_sanitize = filter_var($date, FILTER_SANITIZE_NUMBER_INT);
+    return $date_sanitize;
 };
 
-function filter_string_first($first_name_verif)
+function sanitize_first($first_name)
 {
-    // filter
-    if (filter_var($first_name_verif, FILTER_SANITIZE_STRING)) {
-        echo "A string was found.";
-    } else {
-        echo "A string was not found.";
-    }
+    $first_name_sanitize = filter_var($first_name, FILTER_SANITIZE_STRING);
+    return $first_name_sanitize;
 };
 
-function filter_string_last($last_name_verif)
+function sanitize_last($last_name)
 {
-    // filter
-    if (filter_var($last_name_verif, FILTER_SANITIZE_STRING)) {
-        echo "A string was found.";
-    } else {
-        echo "A string was not found.";
-    }
+    $last_name_sanitize = filter_var($last_name, FILTER_SANITIZE_STRING);
+    return $last_name_sanitize;
+};
+
+// Validation
+
+function validate_first($first_name)
+{
+    $first_name_validate = ctype_alpha ($first_name);
+    return $first_name_validate;
+};
+
+function validate_last($last_name)
+{
+    $last_name_validate = ctype_alpha ($last_name);
+    return $last_name_validate;
+};
+
+function validate_date($date)
+{
+    $date_validate = filter_var($date, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+
+    return $date_validate;
     
 };
+// ----------------------------------------------------------
 
-require_once 'add_user.php';

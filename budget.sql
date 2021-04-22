@@ -11,6 +11,19 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+-- Suppression DATABASE
+
+DROP DATABASE IF EXISTS `budget`;
+
+-- Liste des DATABASES
+
+SHOW DATABASES;
+
+-- Création DATABASE
+
+CREATE DATABASE `budget` CHARACTER SET utf8;
+USE `budget`;
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20,7 +33,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `budget`
 --
-use `budget`
+
 -- --------------------------------------------------------
 
 --
@@ -102,7 +115,7 @@ CREATE TABLE `users` (
   `birth_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+--
 -- Déchargement des données de la table `users`
 --
 
