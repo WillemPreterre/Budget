@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="/assets/css/style.css">
     <?php require_once 'help.php'; ?>
+    
+    
 </head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-persoUn">

@@ -1,20 +1,20 @@
 <?php
 // Sanitize_date (Sanitize = nettoie)
-function sanitize_date($date)
+function sanitize_date($date_choice)
 {
-    $date_sanitize = filter_var($date, FILTER_SANITIZE_NUMBER_INT);
+    $date_sanitize = filter_var($date_choice, FILTER_SANITIZE_NUMBER_INT);
     return $date_sanitize;
 };
 
-function sanitize_first($first_name)
+function sanitize_first($first_name_choice)
 {
-    $first_name_sanitize = filter_var($first_name, FILTER_SANITIZE_STRING);
+    $first_name_sanitize = filter_var($first_name_choice, FILTER_SANITIZE_STRING);
     return $first_name_sanitize;
 };
 
-function sanitize_last($last_name)
+function sanitize_last($last_name_choice)
 {
-    $last_name_sanitize = filter_var($last_name, FILTER_SANITIZE_STRING);
+    $last_name_sanitize =  filter_var($last_name_choice, FILTER_SANITIZE_STRING);
     return $last_name_sanitize;
 };
 

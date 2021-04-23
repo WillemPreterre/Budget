@@ -14,13 +14,45 @@
                         <label for="object">Nom de l'objet</label>
                         <input type="text" class="form-control" id="object" required placeholder="Table" required name="object_id">
                     </div>
+                    <div class="form-group mt-2">
+                        <label for="date">Date d'achat</label>
+                        <input type="date" class="form-control" id="date" required placeholder="Table" required name="date_id">
+                    </div>
                     <!-- Mettre un symbole euros inefacable -->
                     <div class="form-group mt-2">
-                        <label for="product">Coût du produit</label>
-                        <input type="number" class="form-control" id="product" required placeholder="27 euros" required name="product_id">
+                        <label for="cost">Coût du produit</label>
+                        <input type="number" class="form-control" id="cost" required placeholder="27" required name="cost_id">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <?php 
+                    
+                    // récupération en POST
 
+                    if($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $name = $_POST["name_id"];
+                        $object = $_POST["object_id"];
+                        $date = $_POST["date_id"];
+                        $cost = $_POST["cost_id"];
+
+                        if (empty($name)) {
+                            echo "Prénom est vide";
+                        }
+
+                        if (empty($object)) {
+                            echo "Nom est vide";
+                        }
+
+                        if (empty($date)) {
+                            echo "Date est vide";
+                        }
+
+                        if (empty($cost)) {
+                            echo "Date est vide";
+                        }
+
+
+                        var_dump($name,$object,$date,$cost);
+                    }?>
                 </form>
             </div>
         </div>
