@@ -35,7 +35,10 @@ USE `budget`;
 --
 
 -- --------------------------------------------------------
-
+-- https://www.w3schools.com/sql/sql_join.asp
+-- SELECT incomes.inc_id, incomes_categories.inc_cat_name, incomes.inc_receipt_date,incomes.inc_amount,incomes.user_id
+-- FROM incomes
+-- INNER JOIN incomes_categories ON incomes.inc_cat_id=incomes_categories.inc_cat_id;
 --
 -- Structure de la table `expenses`
 --

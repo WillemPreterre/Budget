@@ -1,6 +1,7 @@
 <?php require_once 'inc/header.php'; ?>
 <?php require_once 'function.php' ?>
 <?php $usersAll = get_users(); ?>
+<?php $incomes = get_incomes(); ?>
 <?php $erreur1 = $erreur2 = $erreur3 = false; ?>
 
 
@@ -19,25 +20,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cost = $_POST["cost_id"];
     $user = $_POST["user_id"];
 
-    $sanitize_type = sanitize_string($type);
+    $sanitize_type = sanitize_int($type);
     $sanitize_date = sanitize_int($date);
     $sanitize_cost = sanitize_int($cost);
     $sanitize_user = sanitize_int($user);
     // print_r_function($sanitize_birthday);
 
     // Vérification si sanitaze passe on valide et on envoie sinon erreur
-    if ($user == $sanitize_user && validate_int($user) && $type == $sanitize_type && validate_string($type) && $cost == $sanitize_cost && validate_int($cost) && isValid($date)) {
+    if ($user == $sanitize_user && validate_int($user) && $type == $sanitize_type && validate_int($type) && $cost == $sanitize_cost && validate_int($cost) && isValid($date)) {
 
         // Passage des champs avec une majuscule
         $caps_validate_type = ucwords(strtolower($sanitize_type));
         $validate_date = $sanitize_date;
         $validate_cost = $sanitize_cost;
         $validate_user = $sanitize_user;
-
+        
         $link = mysqli_connect("localhost", "root", "", "budget");
 
         // Attempt insert query execution
-        $sql = "INSERT INTO expenses (exp_date, exp_amount, exp_label, user_id) VALUES ('$validate_date', '$validate_cost','$caps_validate_type','$validate_user')";
+        $sql = "INSERT INTO incomes (inc_receipt_date, inc_amount, inc_cat_id, user_id) VALUES ('$validate_date', '$validate_cost','$caps_validate_type','$validate_user')";
 
         if (mysqli_query($link, $sql)) {
             echo "Records added successfully.";
@@ -63,8 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-
-
     // // https://www.tutorialrepublic.com/php-tutorial/php-filters.php
     // // Sample email address
     // $email = "someone@+example.com";
@@ -80,48 +79,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // }
 
 }
-
-
-
 ?>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Dépense</h1>
+                <h1>Revenu</h1>
                 <form method="POST" action="">
-                    <div class="form-group mt-2">
-                        <label for="type">Type</label>
-                        <input type="text" class="form-control" id="type" required placeholder="Table" required name="type_id">
-                        <?php if ($erreur1 == true) : ?>
-                            <p class="text-danger">type incorrect</p>
-                        <?php endif ?>
+                    <div class="form-group">
+                        <label for="type">Type de revenu</label>
+                        <select class="form-control" id="type" name="type_id">
+                            <?php foreach ($incomes as $income) : ?>
+
+                                <option value="<?php echo $income['inc_cat_id'] ?>"> <?php echo $income['inc_cat_name'] ?></option>
+
+                            <?php endforeach ?>
+
+                            <?php if ($erreur1 == true) : ?>
+                                <p class="text-danger">Type incorrect</p>
+                            <?php endif ?>
+                        </select>
                     </div>
                     <div class="form-group mt-2">
-                        <label for="date">Date d'achat</label>
+                        <label for="date">Date de remise</label>
                         <input type="date" class="form-control" id="date" required placeholder="Table" required name="date_id">
                         <?php if ($erreur3 == true) : ?>
                             <p class="text-danger">Date incorrect</p>
                         <?php endif ?>
                     </div>
+
                     <!-- Mettre un symbole euros inefacable -->
                     <div class="form-group mt-2">
-                        <label for="cost">Coût</label>
+                        <label for="cost">Argent reçu</label>
                         <input type="number" class="form-control" id="cost" required placeholder="27" required name="cost_id">
                         <?php if ($erreur2 == true) : ?>
-                            <p class="text-danger">Coût incorrect</p>
+                            <p class="text-danger">reçu incorrect</p>
                         <?php endif ?>
-                    </div>  
+                    </div>
 
                     <div class="form-group">
-                        <label for="user-selection">Utilisateurs</label>
+                        <label for="user-selection">Utilisateur</label>
                         <select class="form-control" id="user-selection" name="user_id">
                             <?php foreach ($usersAll as $user) : ?>
-
-                                <option>   </option>
-                                <option value="<?php echo $user['user_id'] ?>"><?php echo $user['first_name'],$user['last_name'] ?></option>
-
+                                <option> <?php echo $user['user_id'] ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>

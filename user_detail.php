@@ -21,22 +21,25 @@
             // Si $_GET contient la clé user_id et qu'elle n'est pas vide
             if (isset($user_id) && !empty($user_id)) {
 
-                // On va cherhcer les détails dans la table users si ils existent
+                // On va chercher les détails dans la table users si ils existent
                 $user = get_user_detail($user_id);
-
                 // Si la fonction get_user_detail trouve une correspondance avec $user_id
                 if (get_user_detail($user_id) != false) {
                     // fonction avec dépense + revenu
                     // var_dump($user);
 
+                    // Récupération des expenses en fonction de l'id
+                    $expense = get_user_detail_expense($user_id)
             ?>
                     <div class="col">
-                        <h2><?php echo $user['first_name'], $user['last_name'],$user['birth_date']; ?></h2>
+                        <h2><?php echo $user['first_name'], $user['last_name'] ?></h2>
+                        <p><?php echo $user['birth_date']; ?></p>
                     </div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-
-
+                    <div class="col">
+                        <h3>Dépense</h3>
+                        <p><?php echo $expense['exp_label'] ?> <?php echo $expense['exp_amount'] ?>
+                            <?php echo $expense['exp_date'] ?></p>
+                    </div>
 
             <?php
                 } else {
@@ -52,9 +55,8 @@
             // Envoie nombre dans comme paramètre
             ?>
 
-            <div class="col"></div>
-            <div class="col"></div>
         </div>
     </div>
 
-    <?php require_once 'inc/footer.php';                     print_r_function($user);?>
+    <?php require_once 'inc/footer.php';
+    print_r_function($user); ?>

@@ -28,13 +28,13 @@
             // Passage des champs avec une majuscule
             $caps_validate_first = ucwords(strtolower($sanitize_firstname));
             $caps_validate_last = ucwords(strtolower($sanitize_lastname));
-            $caps_validate_date = ucwords(strtolower($sanitize_birthday));
+            $validate_date = $sanitize_birthday;
 
             $link = mysqli_connect("localhost", "root", "", "budget");
 
             // Attempt insert query execution
-            $sql = "INSERT INTO users (first_name, last_name, birth_date) VALUES ('$caps_validate_first', '$caps_validate_last','$caps_validate_date')";
-
+            $sql = "INSERT INTO users (first_name, last_name, birth_date) VALUES ('$caps_validate_first', '$caps_validate_last','$validate_date')";
+            // Envoie dans la base
             if (mysqli_query($link, $sql)) {
                 echo "Records added successfully.";
             } else {
@@ -66,29 +66,30 @@
         <div class="row">
             <div class="col">
                 <form method="POST">
+                <h1 class="mb-4 mt-3">Création utilisateur</h1>
                     <div class="form-group mt-2">
                         <label for="first-name">Prénom</label>
                         <input type="text" class="form-control" id="first-name " required placeholder="John" required name="first-name">
                         <!-- Permet d'afficher le msg si erreur = true -->
-                        <?php if ($erreur1 == true) {
-                            echo "Prénom incorrect";
-                        } ?>
+                        <?php if ($erreur1 == true) : ?>
+                            <p class="text-danger">Prénom incorrect</p>
+                         <?php endif ?>
                     </div>
 
                     <div class="form-group">
                         <label for="last-name">Nom</label>
                         <input type="text" class="form-control" id="last-name" required placeholder="117" required name="last-name">
-                        <?php if ($erreur2 == true) {
-                            echo "Nom incorrect";
-                        } ?>
+                        <?php if ($erreur2 == true) : ?>
+                            <p class="text-danger">Nom incorrect</p>
+                        <?php endif ?>
                     </div>
 
                     <div class="form-group">
                         <label for="birthdaydate">Birthday</label>
                         <input type="date" class="form-control" id="birth-date" required placeholder="<?php echo date("Y/n/j"); ?>" name="birth-date">
-                        <?php if ($erreur3 == true) {
-                            echo "Date incorrect";
-                        } ?>
+                        <?php if ($erreur3 == true) : ?>
+                            <p class="text-danger">Date incorrect</p>
+                        <?php endif ?>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button><br>
                     <?php

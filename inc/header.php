@@ -15,7 +15,7 @@
 </head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-persoUn">
-        <a class="navbar-brand" href="index.php">
+        <a class="navbar-brand" href="dashboard.php">
             <img src="img/3516563.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
             Bootstrap
         </a>
